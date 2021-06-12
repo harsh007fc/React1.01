@@ -12,14 +12,26 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
-    function Hello()
+    function Hello({person='Default'})
     {
+        // console.log(props) 
         return(
             //JSX XODE ONLY
-            <h1>Hello</h1>
+            <h1>Hello {person}</h1>
         )
     }
-    ReactDOM.render(<Hello/>,document.getElementById('root'));
+    function Hellos()
+    {
+        return(
+            <React.Fragment> 
+            <Hello person='Harsh' age='20'/>
+            <Hello person='normal'/>
+            <Hello person='blue'/>
+            <Hello/>
+            </React.Fragment>
+        )
+    }
+    ReactDOM.render(<Hellos/>,document.getElementById('root'));
     </script>
 </body>
 </html>
