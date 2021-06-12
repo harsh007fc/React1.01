@@ -14,13 +14,30 @@
     <div id="root"></div>
     <script type="text/babel">
     class Counter extends React.Component
-    { //class ka object rect create krega extends keyword se
+    {
+        
+        //class ka object rect create krega extends keyword se
+        constructor()
+        {
+            super(); //kyunki child classes k paas this nhi hota isliye unhe laane k liye super keyword call krna pdta hai -->isse class ka constructor call ho jata hai aur this mil jata hai
+
+            this.state={
+                count:0
+            }
+        }
+
+        increment = ()=>{
+            // this.state.count = this.state.count+1; //isse change nhi hoti state kyunki naa toh render dobara call huya aur na hi state change hui
+            this.setState({count:this.state.count+1});
+            //upr wali line se state as well as ui change hogi
+        }
         render(){
+            console.log('rendered again');
             return(
                 //only jsx
                 <React.Fragment>
-                    <h1>0</h1>
-                    <button>+</button>
+                    <h1>{this.state.count}</h1>
+                    <button onClick={this.increment}>+</button>
                 </React.Fragment>
             )
         }
